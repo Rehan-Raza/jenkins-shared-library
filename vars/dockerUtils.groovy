@@ -6,7 +6,7 @@ class DockerUtils {
     }
 
     static void loginDocker(script) {
-        script.withCredentials([script.usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+        script.withCredentials([script.usernamePassword(credentialsId: 'rehan1114-dockerhub', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
             script.sh "echo \$DOCKER_PASS | docker login -u \$DOCKER_USER --password-stdin"
         }
     }
