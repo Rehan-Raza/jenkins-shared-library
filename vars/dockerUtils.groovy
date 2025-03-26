@@ -1,10 +1,11 @@
 package org.example
 
 class DockerUtils {
-    static void buildImage(script) {
-        script.sh "docker build -t rehan1114/myimg ."
-    }
 
+    def buildImage(script) {
+    def imageTag = "rehan1114/myimg:${script.env.BUILD_NUMBER}"
+    script.sh "docker build -t ${imageTag} ."
+}
     static void loginDocker(script) {
         script.withCredentials([script.usernamePassword(credentialsId: 'rehan1114-dockerhub', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
             script.sh "echo \$DOCKER_PASS | docker login -u \$DOCKER_USER --password-stdin"
@@ -16,6 +17,6 @@ class DockerUtils {
     }
 
     static void runContainer(script) {
-        script.sh "docker run -dit --name contt3 rehan1114/myimg"
+        script.sh "docker run -dit --name contt3v rehan1114/myimg"
     }
 }
