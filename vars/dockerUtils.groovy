@@ -16,6 +16,6 @@ class DockerUtils {
     }
 
     static void runContainer(script) {
-        script.sh "docker run -dit --name cont3 rehan1114/myimg"
+        script.sh "docker run -dit --name contt3 rehan1114/myimg"
     }
 }
